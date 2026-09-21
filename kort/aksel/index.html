@@ -442,6 +442,29 @@
         margin-top: 1rem;
     }
     .qr-sub strong { font-weight: 500; color: var(--deep); }
+    .qr-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 1.1rem;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.8rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.64rem;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--deep);
+        cursor: pointer;
+        transition: border-color 0.2s;
+    }
+    .qr-link:hover { border-color: rgba(200,160,74,0.5); }
+    .qr-link svg { width: 14px; height: 14px; stroke: var(--text-body); }
+
     .qr-close {
         margin-top: 1.1rem;
         background: none;
@@ -470,7 +493,7 @@
         opacity: 0;
         transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
-        z-index: 10;
+        z-index: 30;
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
@@ -524,9 +547,9 @@
     </a>
 
     <div class="share-wrap">
-        <button class="btn-share" id="shareCard">
+        <button class="btn-share" id="shareLink">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="currentColor"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-            Del kortet
+            Del introduksjonslenken
         </button>
     </div>
 
@@ -548,6 +571,10 @@
         <p class="qr-title">Scan for en personlig introduksjon</p>
         <div class="qr-box" id="qrBox"></div>
         <p class="qr-sub">Referert av <strong>Aksel Gundersen</strong> · Impact Partner</p>
+        <button class="qr-link" id="copyLinkModal">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke="currentColor"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span>Eller kopier lenken</span>
+        </button>
         <button class="qr-close" id="qrClose">Lukk</button>
     </div>
 </div>
@@ -586,23 +613,37 @@
     document.getElementById('qrClose').addEventListener('click', () => qrOverlay.classList.remove('show'));
     qrOverlay.addEventListener('click', e => { if (e.target === qrOverlay) qrOverlay.classList.remove('show'); });
 
-    document.getElementById('shareCard').addEventListener('click', async () => {
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    async function copyReferralLink() {
+        try {
+            await navigator.clipboard.writeText(PERSON.referralUrl);
+            showToast('Lenke kopiert');
+        } catch (e) {
+            window.prompt('Kopier lenken:', PERSON.referralUrl);
+        }
+    }
+
+    async function shareReferralLink() {
         const shareData = {
-            title: `${PERSON.firstName} ${PERSON.lastName} — Vitae Investments`,
-            text: 'Impact Partner i Vitae Investments — boliger for vanskeligstilte i Storbritannia.',
-            url: PERSON.cardUrl
+            title: 'En personlig introduksjon — Vitae Investments',
+            text: `${PERSON.firstName} ${PERSON.lastName} vil gjerne introdusere deg for Vitae Investments.`,
+            url: PERSON.referralUrl
         };
         if (navigator.share) {
             try { await navigator.share(shareData); } catch (e) {}
         } else {
-            try {
-                await navigator.clipboard.writeText(PERSON.cardUrl);
-                const toast = document.getElementById('toast');
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2200);
-            } catch (e) {}
+            copyReferralLink();
         }
-    });
+    }
+
+    document.getElementById('shareLink').addEventListener('click', shareReferralLink);
+    document.getElementById('copyLinkModal').addEventListener('click', copyReferralLink);
 </script>
 
 </body>
