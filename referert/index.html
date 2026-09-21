@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Velkommen — Vitae Investments</title>
+<meta name="description" content="Du har blitt referert av en av våre Impact Partnere. En kort introduksjon til Vitae Investments.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/vitae-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --deep: #001B2C;
+        --deep-light: #0A2A3E;
+        --accent: #C8A04A;
+        --accent-light: #d4b46a;
+        --cream: #F7F4EF;
+        --cream-dark: #EDE8E0;
+        --white: #FFFFFF;
+        --text-body: #3A4F5E;
+        --text-muted: #6B7D8D;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: radial-gradient(ellipse at 25% 10%, #0A2A3E 0%, var(--deep) 55%, #00121E 100%);
+        color: var(--cream);
+        overflow: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(rgba(200,160,74,0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+    }
+
+    /* ── Progress ── */
+    .progress {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: rgba(247,244,239,0.08);
+        z-index: 20;
+    }
+    .progress-bar {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── Top brand ── */
+    .topbar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        display: flex;
+        justify-content: center;
+        padding: calc(1.1rem + env(safe-area-inset-top)) 1rem 0;
+        z-index: 15;
+        pointer-events: none;
+    }
+    .topbar .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        opacity: 0.9;
+    }
+    .topbar img {
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 0 2px rgba(200,160,74,0.3);
+    }
+    .topbar .brand-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 0.85rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--cream);
+    }
+    .topbar .brand-name span {
+        color: var(--accent-light);
+        font-family: 'Inter', sans-serif;
+        font-size: 0.48rem;
+        letter-spacing: 0.4em;
+        display: block;
+    }
+
+    /* ── Slides ── */
+    .deck {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+    .slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 5rem 1.8rem 6.5rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(24px);
+        transition: opacity 0.65s ease, transform 0.65s ease, visibility 0.65s;
+        overflow-y: auto;
+    }
+    .slide.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .slide-inner { max-width: 560px; width: 100%; }
+
+    .eyebrow {
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 1.3rem;
+    }
+    .divider {
+        width: 44px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        margin: 1.5rem auto;
+    }
+
+    h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-size: clamp(2rem, 7vw, 3rem);
+        line-height: 1.18;
+        color: var(--white);
+    }
+    h1 em {
+        font-style: italic;
+        color: var(--accent-light);
+    }
+    .lead {
+        font-size: clamp(0.92rem, 3.6vw, 1.05rem);
+        font-weight: 300;
+        line-height: 1.75;
+        color: rgba(247,244,239,0.75);
+        margin-top: 1.3rem;
+    }
+    .lead strong { font-weight: 500; color: var(--cream); }
+
+    /* Slide 1 — referral */
+    .partner-photo {
+        width: 108px; height: 108px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        margin: 0 auto 1.6rem;
+        display: block;
+        box-shadow: 0 0 0 3px var(--deep), 0 0 0 4px rgba(200,160,74,0.55), 0 14px 40px rgba(0,0,0,0.4);
+    }
+    .partner-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.35rem;
+        color: var(--white);
+        margin-top: 0.4rem;
+    }
+    .partner-role {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-top: 0.4rem;
+    }
+
+    /* Stats */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem 0.8rem;
+        margin-top: 2.2rem;
+    }
+    .stat-num {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(1.7rem, 6vw, 2.4rem);
+        font-weight: 500;
+        color: var(--accent-light);
+        line-height: 1;
+    }
+    .stat-label {
+        font-size: 0.56rem;
+        font-weight: 500;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(247,244,239,0.55);
+        margin-top: 0.5rem;
+        line-height: 1.5;
+    }
+
+    /* Model rows */
+    .model {
+        margin-top: 2rem;
+        text-align: left;
+        border-top: 1px solid rgba(200,160,74,0.2);
+    }
+    .model-row {
+        display: flex;
+        gap: 1.1rem;
+        align-items: baseline;
+        padding: 1.05rem 0;
+        border-bottom: 1px solid rgba(200,160,74,0.14);
+    }
+    .model-num {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.15rem;
+        color: var(--accent);
+        flex-shrink: 0;
+        width: 1.6rem;
+    }
+    .model-text {
+        font-size: 0.86rem;
+        font-weight: 300;
+        line-height: 1.65;
+        color: rgba(247,244,239,0.78);
+    }
+    .model-text strong { font-weight: 500; color: var(--white); }
+
+    /* Quote */
+    .quote {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: clamp(1.15rem, 4.5vw, 1.5rem);
+        line-height: 1.55;
+        color: rgba(247,244,239,0.9);
+        margin-top: 1.8rem;
+    }
+    .quote-source {
+        font-family: 'Inter', sans-serif;
+        font-style: normal;
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-top: 1.1rem;
+    }
+
+    /* CTA */
+    .cta-group {
+        margin-top: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+    }
+    .btn-gold {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        background: linear-gradient(135deg, var(--accent) 0%, #b8903d 100%);
+        color: var(--deep);
+        padding: 1rem 2.4rem;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-shadow: 0 6px 22px rgba(200,160,74,0.35);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(200,160,74,0.45); }
+    .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 1px solid rgba(200,160,74,0.4);
+        color: var(--cream);
+        padding: 0.9rem 2rem;
+        border-radius: 6px;
+        font-size: 0.66rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: rgba(200,160,74,0.08); }
+
+    .owl {
+        width: 46px; height: 46px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        margin: 2rem auto 0;
+        box-shadow: 0 0 0 2px rgba(200,160,74,0.35);
+        opacity: 0.9;
+    }
+
+    /* ── Nav ── */
+    .nav {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        padding: 0 1.2rem calc(1.3rem + env(safe-area-inset-bottom));
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        z-index: 20;
+    }
+    .dots { display: flex; gap: 0.45rem; }
+    .dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: rgba(247,244,239,0.22);
+        transition: background 0.3s, transform 0.3s;
+        cursor: pointer;
+    }
+    .dot.active { background: var(--accent); transform: scale(1.35); }
+
+    .nav-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px; height: 46px;
+        border-radius: 50%;
+        border: 1px solid rgba(200,160,74,0.35);
+        background: rgba(0,27,44,0.55);
+        color: var(--cream);
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s, opacity 0.3s;
+        backdrop-filter: blur(6px);
+    }
+    .nav-btn:hover { border-color: var(--accent); background: rgba(200,160,74,0.12); }
+    .nav-btn svg { width: 18px; height: 18px; }
+    .nav-btn.hidden { opacity: 0; pointer-events: none; }
+    .nav-btn.pulse { animation: pulse 2.4s ease infinite; }
+    @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(200,160,74,0.35); }
+        50% { box-shadow: 0 0 0 9px rgba(200,160,74,0); }
+    }
+
+    .hint {
+        position: fixed;
+        bottom: calc(5.2rem + env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.58rem;
+        font-weight: 500;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: rgba(247,244,239,0.4);
+        z-index: 15;
+        transition: opacity 0.5s;
+        pointer-events: none;
+    }
+    .hint.gone { opacity: 0; }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="topbar">
+    <div class="brand">
+        <img src="/vitae-logo.jpg" alt="">
+        <div class="brand-name">Vitae<span>Investments</span></div>
+    </div>
+</div>
+
+<main class="deck" id="deck">
+
+    <!-- 1 · Referral -->
+    <section class="slide active">
+        <div class="slide-inner">
+            <img class="partner-photo" id="partnerPhoto" src="/vitae-owl-clean.jpg" alt="">
+            <div class="eyebrow">En personlig introduksjon</div>
+            <h1>Hei,</h1>
+            <p class="lead">Du har blitt referert av vår Impact&nbsp;Partner,<br><strong id="partnerNameInline">en av våre partnere</strong>.</p>
+            <div class="partner-name" id="partnerName"></div>
+            <div class="partner-role" id="partnerRole" style="display:none;">Impact Partner · Vitae Investments</div>
+        </div>
+    </section>
+
+    <!-- 2 · Thank you -->
+    <section class="slide">
+        <div class="slide-inner">
+            <div class="eyebrow">Vitae Investments</div>
+            <h1>Takk for din <em>interesse</em>.</h1>
+            <div class="divider"></div>
+            <p class="lead">De neste to minuttene gir deg en kort innføring i hvem vi er, hva vi bygger — og hvorfor norske investorer har inngått flere hundre låneavtaler med oss.</p>
+        </div>
+    </section>
+
+    <!-- 3 · Who we are -->
+    <section class="slide">
+        <div class="slide-inner">
+            <div class="eyebrow">Hvem vi er</div>
+            <h1>Vi bygger <em>trygge hjem</em> for dem som trenger det mest.</h1>
+            <div class="divider"></div>
+            <p class="lead">Vitae Investments er et norsk-britisk eiendomsselskap. Vi eier og utvikler boliger for vanskeligstilte i Storbritannia — der leien dekkes av det offentlige, med <strong>lovpålagt ansvar</strong> for å skaffe bolig.</p>
+        </div>
+    </section>
+
+    <!-- 4 · How it works -->
+    <section class="slide">
+        <div class="slide-inner">
+            <div class="eyebrow">Slik fungerer det</div>
+            <h1>En enkel <em>låneavtale</em>.</h1>
+            <div class="model">
+                <div class="model-row">
+                    <span class="model-num">01</span>
+                    <p class="model-text">Du inngår en <strong>låneavtale med Vitae Investments Norge AS</strong> — ryddig, kontraktsfestet og uten kompliserte strukturer.</p>
+                </div>
+                <div class="model-row">
+                    <span class="model-num">02</span>
+                    <p class="model-text">Kapitalen finansierer kjøp og ombygging av eiendommer til boliger for vanskeligstilte i Storbritannia.</p>
+                </div>
+                <div class="model-row">
+                    <span class="model-num">03</span>
+                    <p class="model-text">Du mottar <strong>10 % rente det første året og 8 % deretter</strong> — utbetalt månedlig, direkte til din konto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 · Numbers -->
+    <section class="slide">
+        <div class="slide-inner">
+            <div class="eyebrow">Tallene som teller</div>
+            <h1>En portefølje i <em>vekst</em>.</h1>
+            <div class="stats">
+                <div><div class="stat-num">16</div><div class="stat-label">Eiendommer</div></div>
+                <div><div class="stat-num">210</div><div class="stat-label">Boenheter</div></div>
+                <div><div class="stat-num">270M</div><div class="stat-label">NOK porteføljeverdi</div></div>
+                <div><div class="stat-num">97&nbsp;%</div><div class="stat-label">Utleiegrad</div></div>
+                <div><div class="stat-num">20M+</div><div class="stat-label">NOK utbetalt</div></div>
+                <div><div class="stat-num">250+</div><div class="stat-label">Låneavtaler inngått</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6 · Impact -->
+    <section class="slide">
+        <div class="slide-inner">
+            <div class="eyebrow">Impact</div>
+            <h1>Avkastning med <em>mening</em>.</h1>
+            <p class="quote">«Trygghet fra første kveld. Gjenforent i et varig hjem. Bedre helse og nytt fellesskap.»</p>
+            <div class="quote-source">Fra beboernes historier · Selskapsrapport H1 2026</div>
+            <div class="divider"></div>
+            <p class="lead">Hver krone arbeider dobbelt: den gir deg fast, månedlig avkastning — og gir noen et hjem.</p>
+        </div>
+    </section>
+
+    <!-- 7 · Next step -->
+    <section class="slide">
+        <div class="slide-inner">
+            <div class="eyebrow">Neste steg</div>
+            <h1>Vi tar det <em>herfra</em>.</h1>
+            <p class="lead">Ingen forpliktelser — utforsk i eget tempo, eller la oss sende deg informasjonsmemorandumet.</p>
+            <div class="cta-group">
+                <a class="btn-gold" href="https://vitaeinvestments.no" target="_blank" rel="noopener">Utforsk vitaeinvestments.no</a>
+                <a class="btn-ghost" href="mailto:aksel@vitaeinvestments.no?subject=Informasjonsmemorandum">Be om informasjonsmemorandum</a>
+                <a class="btn-ghost" href="https://vitaeinvestments.no/rapport/h1-2026/" target="_blank" rel="noopener">Les selskapsrapporten</a>
+            </div>
+            <img class="owl" src="/vitae-owl-clean.jpg" alt="">
+        </div>
+    </section>
+
+</main>
+
+<div class="hint" id="hint">Trykk for å bla</div>
+
+<nav class="nav">
+    <button class="nav-btn hidden" id="prevBtn" aria-label="Forrige">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="dots" id="dots"></div>
+    <button class="nav-btn pulse" id="nextBtn" aria-label="Neste">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+</nav>
+
+<script>
+    /* ── Partner-register: legg til nye Impact Partners her ── */
+    const PARTNERS = {
+        aksel: { navn: 'Aksel Gundersen', bilde: '/aksel-gundersen.jpg' }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const partner = PARTNERS[(params.get('p') || '').toLowerCase()];
+    if (partner) {
+        document.getElementById('partnerPhoto').src = partner.bilde;
+        document.getElementById('partnerPhoto').alt = partner.navn;
+        document.getElementById('partnerNameInline').textContent = partner.navn;
+        document.getElementById('partnerRole').style.display = '';
+    }
+
+    /* ── Deck ── */
+    const slides = [...document.querySelectorAll('.slide')];
+    const dotsEl = document.getElementById('dots');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    const hint = document.getElementById('hint');
+    let current = 0;
+
+    slides.forEach((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => go(i));
+        dotsEl.appendChild(d);
+    });
+    const dots = [...dotsEl.children];
+
+    function go(i) {
+        if (i < 0 || i >= slides.length || i === current) return;
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = i;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        slides[current].scrollTop = 0;
+        prevBtn.classList.toggle('hidden', current === 0);
+        nextBtn.classList.toggle('hidden', current === slides.length - 1);
+        nextBtn.classList.remove('pulse');
+        progressBar.style.width = ((current + 1) / slides.length * 100) + '%';
+        hint.classList.add('gone');
+    }
+    progressBar.style.width = (1 / slides.length * 100) + '%';
+
+    nextBtn.addEventListener('click', () => go(current + 1));
+    prevBtn.addEventListener('click', () => go(current - 1));
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') go(current + 1);
+        if (e.key === 'ArrowLeft') go(current - 1);
+    });
+
+    /* Tap to advance (ignore links/buttons) */
+    document.getElementById('deck').addEventListener('click', e => {
+        if (e.target.closest('a, button')) return;
+        go(current + 1);
+    });
+
+    /* Swipe */
+    let touchX = null, touchY = null;
+    document.addEventListener('touchstart', e => {
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', e => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) {
+            dx < 0 ? go(current + 1) : go(current - 1);
+        }
+        touchX = touchY = null;
+    }, { passive: true });
+</script>
+
+</body>
+</html>
