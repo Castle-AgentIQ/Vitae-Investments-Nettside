@@ -13141,35 +13141,38 @@ window.addEventListener('resize',drawHist);
         revealEls.forEach(el => observer.observe(el));
 
         // ── Calculator ──
+        // Kalkulator-HTML-en er deaktivert (AVVIK 1) — kjør kun hvis elementet finnes
         const slider = document.getElementById('calcSlider');
-        const display = document.getElementById('calcDisplay');
-        const monthly = document.getElementById('calcMonthly');
-        const total = document.getElementById('calcTotal');
-        const units = document.getElementById('calcUnits');
+        if (slider) {
+            const display = document.getElementById('calcDisplay');
+            const monthly = document.getElementById('calcMonthly');
+            const total = document.getElementById('calcTotal');
+            const units = document.getElementById('calcUnits');
 
-        function formatNum(n) {
-            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            function formatNum(n) {
+                return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+            }
+
+            function updateCalc() {
+                const val = parseInt(slider.value);
+                display.innerHTML = `<span>kr </span>${formatNum(val)}`;
+
+                const monthlyVal = Math.round(val * 0.10 / 12);
+                const totalVal = Math.round(val * 0.10 + val * 0.08);
+                const unitsVal = Math.max(1, Math.round(val / 170000));
+
+                monthly.innerHTML = `<small>kr </small>${formatNum(monthlyVal)}`;
+                total.innerHTML = `<small>kr </small>${formatNum(totalVal)}`;
+                units.textContent = unitsVal;
+
+                // Update slider gradient
+                const pct = ((val - 100000) / (5000000 - 100000)) * 100;
+                slider.style.background = `linear-gradient(90deg, var(--accent) ${pct}%, var(--cream-dark) ${pct}%)`;
+            }
+
+            slider.addEventListener('input', updateCalc);
+            updateCalc();
         }
-
-        function updateCalc() {
-            const val = parseInt(slider.value);
-            display.innerHTML = `<span>kr </span>${formatNum(val)}`;
-
-            const monthlyVal = Math.round(val * 0.10 / 12);
-            const totalVal = Math.round(val * 0.10 + val * 0.08);
-            const unitsVal = Math.max(1, Math.round(val / 170000));
-
-            monthly.innerHTML = `<small>kr </small>${formatNum(monthlyVal)}`;
-            total.innerHTML = `<small>kr </small>${formatNum(totalVal)}`;
-            units.textContent = unitsVal;
-
-            // Update slider gradient
-            const pct = ((val - 100000) / (5000000 - 100000)) * 100;
-            slider.style.background = `linear-gradient(90deg, var(--accent) ${pct}%, var(--cream-dark) ${pct}%)`;
-        }
-
-        slider.addEventListener('input', updateCalc);
-        updateCalc();
 
         // ── Journey scroll animation ──
         const journeyTrack = document.querySelector('.journey-track');
