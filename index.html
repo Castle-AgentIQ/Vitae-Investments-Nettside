@@ -10250,57 +10250,54 @@
 </div>
 </section>
 
-<section class="sim-section">
-<div class="sim-inner">
-<div class="sim-header">
-<div class="intro-label">Avkastningssimulator</div>
-<h2>Hva om du hadde <em>investert?</em></h2>
-<p>Sammenlign Vitae Investments med andre plasseringsalternativer</p>
-</div>
-<div class="sim-controls">
-<div class="sim-control">
-<label>Investeringsbel&oslash;p</label>
-<div class="sim-control-val" id="amtD">500 000 <span>NOK</span></div>
-<input type="range" class="sim-slider" id="amtS" min="100000" max="10000000" step="50000" value="500000">
-</div>
-<div class="sim-control">
-<label>Tidshorisont</label>
-<div class="sim-control-val" id="yrD">5 <span>&aring;r</span></div>
-<input type="range" class="sim-slider" id="yrS" min="1" max="10" step="1" value="5">
-</div>
-</div>
-<div class="sim-chart-wrap"><canvas id="simChart"></canvas></div>
-<div class="sim-legend">
-<div class="sim-legend-item"><div class="sim-legend-dot" style="background:var(--accent);"></div>Vitae Investments</div>
-<div class="sim-legend-item"><div class="sim-legend-dot" style="background:rgba(130,190,160,0.6);"></div>Bankinnskudd</div>
-<div class="sim-legend-item"><div class="sim-legend-dot" style="background:rgba(100,150,220,0.6);"></div>Aksjefond</div>
-</div>
-<div class="sim-results">
-<div class="sim-result-card"><div class="sim-result-label">Vitae Investments</div><div class="sim-result-val" id="rV">-</div><div class="sim-result-sub">10%/8% alternerende, reinvestert</div></div>
-<div class="sim-result-card"><div class="sim-result-label">Bankinnskudd</div><div class="sim-result-val" id="rB">-</div><div class="sim-result-sub">Ca. 4% &aring;rlig rente</div></div>
-<div class="sim-result-card"><div class="sim-result-label">Aksjefond</div><div class="sim-result-val" id="rF">-</div><div class="sim-result-sub">7,75% forventet avkastning (SpareBank 1)</div></div>
-</div>
-<div class="sim-diff"><div class="sim-diff-val" id="diffVal">-</div><div class="sim-diff-label">Mer med Vitae Investments enn bankinnskudd</div></div>
-<div class="sim-history">
-<div class="sim-history-header">
-<h3>Et <em>ekte</em> eksempel: 2022</h3>
-<p>Hva skjedde med 1 000 000 kr investert i januar 2022?</p>
-</div>
-<div class="sim-history-wrap"><canvas id="histChart"></canvas></div>
-<div class="sim-history-legend">
-<span><i style="background:var(--accent);"></i>Vitae Investments</span>
-<span><i style="background:rgba(255,255,255,0.25);"></i>Bankinnskudd</span>
-<span><i style="background:#c45c5c;"></i>Aksjefond (MSCI World)</span>
-</div>
-<div class="sim-history-insight">
-<div class="sim-insight-card"><h4>Aksjefond</h4><div class="val negative">&minus;115 900 kr</div><div class="sub">MSCI World falt 11.6% i 2022</div></div>
-<div class="sim-insight-card"><h4>Vitae Investments</h4><div class="val positive">+100 000 kr</div><div class="sub">Kontraktsfestet 10% utbetalt som avtalt</div></div>
-</div>
-<p class="sim-risk-note">I 2022 tapte aksjefond globalt over 11% av verdien. Bankinnskudd ga kun 1.5% rente. Vitae Investments-investorer mottok sine utbetalinger som normalt &mdash; fordi avkastningen er kontraktsfestet og uavhengig av markedssvingninger.</p>
-</div>
-<div class="sim-disclaimer">Tallene er f&oslash;r skatt og inflasjon. Merk at avkastning fra aksjefond beskattes vesentlig h&oslash;yere enn renteinntekter fra låneavtalen med Vitae Investments: 37,84% effektiv skattesats p&aring; aksjegevinst mot 22% p&aring; renteinntekter. Avkastning p&aring; aksjefond kan ogs&aring; variere betydelig fra &aring;r til &aring;r og kan bli negativ. Renten fra Vitae Investments er kontraktsfestet. Kilde forventet avkastning aksjefond: SpareBank 1.</div>
-</div>
-</section>
+    <section class="track-record-section">
+        <div class="tr-inner">
+            <div class="tr-header reveal">
+                <div class="intro-label" style="color:var(--accent);">Track Record</div>
+                <h2>Tallene som <em>teller</em></h2>
+                <p class="tr-subtitle">Ikke prognoser. Bare det som faktisk har skjedd.</p>
+            </div>
+
+            <div class="tr-hero-row reveal">
+                <div class="tr-hero-left">
+                    <div class="tr-total-label">Totalt utbetalt til investorer</div>
+                    <div class="tr-total-val"><span class="tr-kr">NOK </span><span class="tr-count-up" data-target="20000000">0</span><span>+</span></div>
+                    <div class="tr-quote">
+                        <blockquote>&laquo;Som et klokkeverk&raquo;</blockquote>
+                        <cite>Bj&oslash;rn H&aring;kon Theighen, investor</cite>
+                    </div>
+                </div>
+                <div class="tr-hero-right">
+                    <div class="tr-dots-canvas-wrap"><canvas id="trDotsCanvas"></canvas></div>
+                    <div class="tr-dots-years"><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2024</span><span>2026</span></div>
+                    <div class="tr-dots-label">92 utbetalinger &middot; 0 mislighold</div>
+                </div>
+            </div>
+
+            <div class="tr-ledger reveal">
+                <div class="tr-ledger-top">
+                    <div class="tr-ledger-title">Utbetalingslogg</div>
+                    <div class="tr-live-badge"><span class="tr-live-dot"></span> Sanntid</div>
+                </div>
+                <div class="tr-ledger-scroll" id="trLedger"></div>
+            </div>
+
+            <div class="tr-bottom" id="trBottom">
+                <div class="tr-stat">
+                    <div class="tr-stat-val"><span class="tr-count-up" data-target="16">0</span></div>
+                    <div class="tr-stat-label">Eiendommer i portef&oslash;ljen</div>
+                </div>
+                <div class="tr-stat">
+                    <div class="tr-stat-val"><span class="tr-count-up" data-target="270">0</span>m+</div>
+                    <div class="tr-stat-label">NOK portef&oslash;ljeverdi</div>
+                </div>
+                <div class="tr-stat">
+                    <div class="tr-stat-val"><span class="tr-count-up" data-target="86">0</span>m</div>
+                    <div class="tr-stat-label">NOK i l&aring;n fra norske investorer</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="portfolio-map" id="portefolje">
         <div class="portfolio-map-inner">
@@ -10313,20 +10310,20 @@
             <!-- Stats -->
             <div class="pf-stats reveal">
                 <div class="pf-stat">
-                    <div class="pf-stat-num"><span class="pf-count" data-target="200">0</span><span>+</span></div>
+                    <div class="pf-stat-num"><span class="pf-count" data-target="210">0</span></div>
                     <div class="pf-stat-label">Boenheter totalt</div>
                 </div>
                 <div class="pf-stat">
-                    <div class="pf-stat-num"><span class="pf-count" data-target="15">0</span></div>
+                    <div class="pf-stat-num"><span class="pf-count" data-target="16">0</span></div>
                     <div class="pf-stat-label">Eiendommer</div>
                 </div>
                 <div class="pf-stat">
-                    <div class="pf-stat-num"><span style="color:var(--accent);">~</span><span class="pf-count" data-target="98">0</span><span>%</span></div>
+                    <div class="pf-stat-num"><span style="color:var(--accent);">~</span><span class="pf-count" data-target="97">0</span><span>%</span></div>
                     <div class="pf-stat-label">Utleiegrad</div>
                 </div>
                 <div class="pf-stat">
-                    <div class="pf-stat-num"><span class="pf-count" data-target="8">0</span></div>
-                    <div class="pf-stat-label">Byer i Storbritannia</div>
+                    <div class="pf-stat-num"><span class="pf-count" data-target="7">0</span></div>
+                    <div class="pf-stat-label">Kommuner i Storbritannia</div>
                 </div>
             </div>
 
@@ -10621,54 +10618,59 @@
     </div>
 
 
-    <section class="track-record-section">
-        <div class="tr-inner">
-            <div class="tr-header reveal">
-                <div class="intro-label" style="color:var(--accent);">Track Record</div>
-                <h2>Tallene som <em>teller</em></h2>
-                <p class="tr-subtitle">Ikke prognoser. Bare det som faktisk har skjedd.</p>
-            </div>
-
-            <div class="tr-hero-row reveal">
-                <div class="tr-hero-left">
-                    <div class="tr-total-label">Totalt utbetalt til investorer</div>
-                    <div class="tr-total-val"><span class="tr-kr">NOK </span><span class="tr-count-up" data-target="4850000">0</span></div>
-                    <div class="tr-quote">
-                        <blockquote>&laquo;Som et klokkeverk&raquo;</blockquote>
-                        <cite>Bj&oslash;rn H&aring;kon Theighen, investor</cite>
-                    </div>
-                </div>
-                <div class="tr-hero-right">
-                    <div class="tr-dots-canvas-wrap"><canvas id="trDotsCanvas"></canvas></div>
-                    <div class="tr-dots-years"><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2025</span></div>
-                    <div class="tr-dots-label">72 utbetalinger &middot; 0 mislighold</div>
-                </div>
-            </div>
-
-            <div class="tr-ledger reveal">
-                <div class="tr-ledger-top">
-                    <div class="tr-ledger-title">Utbetalingslogg</div>
-                    <div class="tr-live-badge"><span class="tr-live-dot"></span> Sanntid</div>
-                </div>
-                <div class="tr-ledger-scroll" id="trLedger"></div>
-            </div>
-
-            <div class="tr-bottom" id="trBottom">
-                <div class="tr-stat">
-                    <div class="tr-stat-val"><span class="tr-count-up" data-target="15">0</span>+</div>
-                    <div class="tr-stat-label">Eiendommer i portef&oslash;ljen</div>
-                </div>
-                <div class="tr-stat">
-                    <div class="tr-stat-val"><span class="tr-count-up" data-target="170">0</span>m+</div>
-                    <div class="tr-stat-label">NOK portef&oslash;ljeverdi</div>
-                </div>
-                <div class="tr-stat">
-                    <div class="tr-stat-val"><span class="tr-count-up" data-target="48">0</span>m+</div>
-                    <div class="tr-stat-label">NOK innhentet fra investorer</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="sim-section">
+<div class="sim-inner">
+<div class="sim-header">
+<div class="intro-label">Avkastningssimulator</div>
+<h2>Hva om du hadde <em>investert?</em></h2>
+<p>Sammenlign Vitae Investments med andre plasseringsalternativer</p>
+</div>
+<div class="sim-controls">
+<div class="sim-control">
+<label>Investeringsbel&oslash;p</label>
+<div class="sim-control-val" id="amtD">500 000 <span>NOK</span></div>
+<input type="range" class="sim-slider" id="amtS" min="100000" max="10000000" step="50000" value="500000">
+</div>
+<div class="sim-control">
+<label>Tidshorisont</label>
+<div class="sim-control-val" id="yrD">5 <span>&aring;r</span></div>
+<input type="range" class="sim-slider" id="yrS" min="1" max="10" step="1" value="5">
+</div>
+</div>
+<div class="sim-chart-wrap"><canvas id="simChart"></canvas></div>
+<div class="sim-legend">
+<div class="sim-legend-item"><div class="sim-legend-dot" style="background:var(--accent);"></div>Vitae Investments</div>
+<div class="sim-legend-item"><div class="sim-legend-dot" style="background:rgba(130,190,160,0.6);"></div>Bankinnskudd</div>
+<div class="sim-legend-item"><div class="sim-legend-dot" style="background:rgba(100,150,220,0.6);"></div>Aksjefond</div>
+</div>
+<div class="sim-disclaimer" style="margin-top:1rem;">Diagrammet er kun et eksempel til illustrasjon. Faktisk avkastning kan avvike, og alle investeringer inneb&aelig;rer risiko.</div>
+<div class="sim-results">
+<div class="sim-result-card"><div class="sim-result-label">Vitae Investments</div><div class="sim-result-val" id="rV">-</div><div class="sim-result-sub">10%/8% alternerende, reinvestert</div></div>
+<div class="sim-result-card"><div class="sim-result-label">Bankinnskudd</div><div class="sim-result-val" id="rB">-</div><div class="sim-result-sub">Ca. 4% &aring;rlig rente</div></div>
+<div class="sim-result-card"><div class="sim-result-label">Aksjefond</div><div class="sim-result-val" id="rF">-</div><div class="sim-result-sub">7,75% forventet avkastning (SpareBank 1)</div></div>
+</div>
+<div class="sim-diff"><div class="sim-diff-val" id="diffVal">-</div><div class="sim-diff-label">Mer med Vitae Investments enn bankinnskudd</div></div>
+<div class="sim-history">
+<div class="sim-history-header">
+<h3>Et <em>ekte</em> eksempel: 2022</h3>
+<p>Hva skjedde med 1 000 000 kr investert i januar 2022?</p>
+</div>
+<div class="sim-history-wrap"><canvas id="histChart"></canvas></div>
+<div class="sim-history-legend">
+<span><i style="background:var(--accent);"></i>Vitae Investments</span>
+<span><i style="background:rgba(255,255,255,0.25);"></i>Bankinnskudd</span>
+<span><i style="background:#c45c5c;"></i>Aksjefond (MSCI World)</span>
+</div>
+<div class="sim-disclaimer" style="margin-top:1rem;">Historisk eksempel til illustrasjon. Historisk avkastning er ingen garanti for fremtidig avkastning, og alle investeringer inneb&aelig;rer risiko.</div>
+<div class="sim-history-insight">
+<div class="sim-insight-card"><h4>Aksjefond</h4><div class="val negative">&minus;115 900 kr</div><div class="sub">MSCI World falt 11.6% i 2022</div></div>
+<div class="sim-insight-card"><h4>Vitae Investments</h4><div class="val positive">+100 000 kr</div><div class="sub">Kontraktsfestet 10% utbetalt som avtalt</div></div>
+</div>
+<p class="sim-risk-note">I 2022 tapte aksjefond globalt over 11% av verdien. Bankinnskudd ga kun 1.5% rente. Vitae Investments-investorer mottok sine utbetalinger som normalt &mdash; fordi avkastningen er kontraktsfestet og uavhengig av markedssvingninger.</p>
+</div>
+<div class="sim-disclaimer">Tallene er f&oslash;r skatt og inflasjon. Merk at avkastning fra aksjefond beskattes vesentlig h&oslash;yere enn renteinntekter fra låneavtalen med Vitae Investments: 37,84% effektiv skattesats p&aring; aksjegevinst mot 22% p&aring; renteinntekter. Avkastning p&aring; aksjefond kan ogs&aring; variere betydelig fra &aring;r til &aring;r og kan bli negativ. Renten fra Vitae Investments er kontraktsfestet. Kilde forventet avkastning aksjefond: SpareBank 1.</div>
+</div>
+</section>
 
 <section class="faq-section" id="faq">
         <div class="faq-inner">
@@ -13466,8 +13468,9 @@ window.addEventListener('resize',drawHist);
         // Canvas dot matrix
         const cvs = document.getElementById('trDotsCanvas');
         let trDotsLit = false;
-        const DD = {cols:12,rows:6,r:5,gap:32,mx:-999,my:-999,sc:[]};
-        for(let i=0;i<72;i++) DD.sc.push(0);
+        const TR_DOTS = 92;
+        const DD = {cols:12,rows:Math.ceil(92/12),r:5,gap:32,mx:-999,my:-999,sc:[]};
+        for(let i=0;i<TR_DOTS;i++) DD.sc.push(0);
 
         if(cvs){
             const ctx=cvs.getContext('2d');
@@ -13477,7 +13480,7 @@ window.addEventListener('resize',drawHist);
             function dXY(i){const c=i%DD.cols,ro=i/DD.cols|0,cw=cvs.clientWidth/DD.cols;return{x:cw*c+cw/2,y:DD.gap*ro+DD.gap/2+5};}
             cvs.addEventListener('pointermove',function(e){const r=cvs.getBoundingClientRect();DD.mx=e.clientX-r.left;DD.my=e.clientY-r.top;});
             cvs.addEventListener('pointerleave',function(){DD.mx=-999;DD.my=-999;});
-            function draw(){ctx.clearRect(0,0,cvs.clientWidth,parseInt(cvs.style.height));for(let i=0;i<72;i++){const p=dXY(i),dx=DD.mx-p.x,dy=DD.my-p.y,dist=Math.sqrt(dx*dx+dy*dy);let ts=0;if(trDotsLit&&dist<60)ts=Math.max(0,1-dist/60);DD.sc[i]+=(ts-DD.sc[i])*0.15;const s=DD.sc[i],r=DD.r+s*4;ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);if(trDotsLit){ctx.fillStyle="rgb("+(200+Math.round(s*55))+","+(160+Math.round(s*40))+","+(74+Math.round(s*30))+")";}else{ctx.fillStyle="rgba(255,255,255,0.12)";}ctx.fill();if(s>0.05&&trDotsLit){ctx.beginPath();ctx.arc(p.x,p.y,r+8*s,0,Math.PI*2);ctx.fillStyle="rgba(200,160,74,"+(s*0.12).toFixed(3)+")";ctx.fill();}}requestAnimationFrame(draw);}
+            function draw(){ctx.clearRect(0,0,cvs.clientWidth,parseInt(cvs.style.height));for(let i=0;i<TR_DOTS;i++){const p=dXY(i),dx=DD.mx-p.x,dy=DD.my-p.y,dist=Math.sqrt(dx*dx+dy*dy);let ts=0;if(trDotsLit&&dist<60)ts=Math.max(0,1-dist/60);DD.sc[i]+=(ts-DD.sc[i])*0.15;const s=DD.sc[i],r=DD.r+s*4;ctx.beginPath();ctx.arc(p.x,p.y,r,0,Math.PI*2);if(trDotsLit){ctx.fillStyle="rgb("+(200+Math.round(s*55))+","+(160+Math.round(s*40))+","+(74+Math.round(s*30))+")";}else{ctx.fillStyle="rgba(255,255,255,0.12)";}ctx.fill();if(s>0.05&&trDotsLit){ctx.beginPath();ctx.arc(p.x,p.y,r+8*s,0,Math.PI*2);ctx.fillStyle="rgba(200,160,74,"+(s*0.12).toFixed(3)+")";ctx.fill();}}requestAnimationFrame(draw);}
             requestAnimationFrame(draw);
         }
 
@@ -13487,8 +13490,8 @@ window.addEventListener('resize',drawHist);
         if (ledgerEl) {
             const months = ['Jan','Feb','Mar','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Des'];
             const rows = [];
-            for (let y = 2025; y >= 2019; y--) {
-                const maxM = (y === 2025) ? 1 : 11;
+            for (let y = 2026; y >= 2019; y--) {
+                const maxM = (y === 2026) ? 5 : 11;
                 for (let m = maxM; m >= 0; m--) {
                     rows.push({ month: months[m], year: y });
                     if (rows.length >= 14) break;
