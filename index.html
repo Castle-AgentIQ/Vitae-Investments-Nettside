@@ -213,222 +213,6 @@
             border-color: rgba(255,255,255,0.2);
         }
 
-        /* ── INVESTOR PORTAL ── */
-        .portal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            background: rgba(0, 27, 44, 0.7);
-            backdrop-filter: blur(12px);
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .portal-overlay.open {
-            display: flex;
-            opacity: 1;
-        }
-
-        .portal-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 3rem 2.5rem;
-            width: 90%;
-            max-width: 420px;
-            box-shadow: 0 30px 80px rgba(0, 27, 44, 0.25);
-            position: relative;
-            transform: translateY(10px);
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .portal-overlay.open .portal-card {
-            transform: translateY(0);
-        }
-
-        .portal-close {
-            position: absolute;
-            top: 1.2rem;
-            right: 1.2rem;
-            width: 32px;
-            height: 32px;
-            border: none;
-            background: var(--cream);
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-            color: var(--text-muted);
-        }
-
-        .portal-close:hover {
-            background: var(--cream-dark);
-            color: var(--deep);
-        }
-
-        .portal-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--deep);
-            letter-spacing: 0.08em;
-            text-align: center;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .portal-logo span {
-            color: var(--accent);
-        }
-
-        .portal-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 400;
-            color: var(--deep);
-            text-align: center;
-            margin-bottom: 0.4rem;
-        }
-
-        .portal-sub {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            text-align: center;
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-
-        .portal-field {
-            margin-bottom: 1rem;
-        }
-
-        .portal-field label {
-            display: block;
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            margin-bottom: 0.4rem;
-        }
-
-        .portal-field input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.88rem;
-            color: var(--deep);
-            background: var(--cream);
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        .portal-field input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(200, 160, 74, 0.1);
-            background: var(--white);
-        }
-
-        .portal-field input::placeholder {
-            color: rgba(107, 125, 141, 0.5);
-        }
-
-        .portal-btn {
-            width: 100%;
-            padding: 0.85rem;
-            background: var(--deep);
-            color: var(--white);
-            border: none;
-            border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 0.5rem;
-        }
-
-        .portal-btn:hover {
-            background: var(--deep-80);
-            transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(0, 27, 44, 0.15);
-        }
-
-        .portal-divider {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .portal-divider::before,
-        .portal-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .portal-divider span {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        .portal-footer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 300;
-        }
-
-        .portal-footer a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .portal-secure {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            margin-top: 1.5rem;
-            font-size: 0.68rem;
-            color: rgba(107, 125, 141, 0.6);
-        }
-
-        .portal-secure svg {
-            width: 12px;
-            height: 12px;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 24px;
-            height: 1.5px;
-            background: var(--white);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
         /* ── HERO CONTENT ── */
         .hero-content {
             flex: 1;
@@ -8061,9 +7845,6 @@
             .sim-controls { grid-template-columns: 1fr; }
             .sim-results { grid-template-columns: 1fr; }
             
-            /* Portal overlay */
-            .portal-card { width: 90%; padding: 2rem; }
-            
             /* General */
             section { overflow-x: hidden; }
             h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
@@ -9317,8 +9098,9 @@
                 <a href="#" data-page="kontakt">Kontakt oss</a>
             </div>
             <div class="nav-actions">
-                <!-- Långiverportal-knapp fjernet. Kan reaktiveres ved å fjerne kommentar-taggene.
-                <a href="#investorportal" class="nav-portal">Långiverportal</a>
+                <!-- Långiverportal-knappen vises når BondIQ-portalen er i drift: fjern kommentar-taggene.
+                     Lenken går rett til portalens egen innloggingsside (e-postkode, intet passord).
+                <a href="https://portal.vitaeinvestments.no/portal/login" class="nav-portal">Långiverportal</a>
                 -->
                 <!-- AVVIK 1: Bli investor-CTA fjernet fra nav. -->
                 <a href="#" data-page="kontakt" class="nav-cta">Kontakt oss</a>
@@ -13406,58 +13188,7 @@ window.addEventListener('resize',drawHist);
         })();
     </script>
 
-    <!-- ═══ INVESTOR PORTAL OVERLAY ═══ -->
-    <div class="portal-overlay" id="portalOverlay">
-        <div class="portal-card">
-            <button class="portal-close" id="portalClose">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
-            </button>
-            <div class="portal-logo"><img src="vitae-logo.jpg" alt="Vitae" style="height:30px;border-radius:50%;margin-right:0.4rem;">VITAE <span>·</span> INVESTMENTS</div>
-            <div class="portal-title">Långiverportal</div>
-            <div class="portal-sub">Logg inn for å følge din låneavtale</div>
-            <div class="portal-field">
-                <label>E-postadresse</label>
-                <input type="email" placeholder="din@epost.no">
-            </div>
-            <div class="portal-field">
-                <label>Passord</label>
-                <input type="password" placeholder="••••••••">
-            </div>
-            <button class="portal-btn">Logg inn</button>
-            <div class="portal-divider"><span>eller</span></div>
-            <!-- AVVIK 1: "Bli investor"-lenke fjernet fra portal-modal. -->
-            <div class="portal-footer">Ikke långiver enn&aring;? <a href="#" data-page="kontakt" onclick="showPage('kontakt'); document.getElementById('portalOverlay').classList.remove('active'); return false;">Ta kontakt</a></div>
-            <div class="portal-secure">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                Sikker tilkobling · 256-bit kryptering
-            </div>
-        </div>
-    </div>
-
     <script>
-        // ── Portal toggle ──
-        const portalLink = document.querySelector('.nav-portal');
-        const portalOverlay = document.getElementById('portalOverlay');
-        const portalClose = document.getElementById('portalClose');
-
-        if (portalLink && portalOverlay) {
-            portalLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                portalOverlay.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            });
-            portalClose.addEventListener('click', () => {
-                portalOverlay.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-            portalOverlay.addEventListener('click', (e) => {
-                if (e.target === portalOverlay) {
-                    portalOverlay.classList.remove('open');
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-
         // ── Track Record Animations ──
         const trSection = document.querySelector('.track-record-section');
         let trAnimated = false;
